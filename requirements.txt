@@ -1,0 +1,6 @@
+apache-beam[gcp]==2.24.0
+ipykernel
+jupyter
+pandas
+requests
+tenacity

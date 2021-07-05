@@ -1,0 +1,34 @@
+{
+    "name": "Canvas ETL",
+    "description": "Batch pulls Canvas data into BigQuery",
+    "parameters": [
+      {
+        "name": "base_url",
+        "label": "Canvas base URL",
+        "helpText": "Canvas base URL",
+        "isOptional": false,
+        "regexes": []
+      },
+      {
+        "name": "endpoint",
+        "label": "Canvas API endpoint",
+        "helpText": "Canvas API endpoint",
+        "isOptional": false,
+        "regexes": []
+      },
+      {
+        "name": "start_date",
+        "label": "School year start date",
+        "helpText": "School year start date",
+        "isOptional": false,
+        "regexes": []
+      },
+      {
+        "name": "token",
+        "label": "Canvas API token",
+        "helpText": "Canvas API token",
+        "isOptional": false,
+        "regexes": []
+      }
+    ]
+  }
