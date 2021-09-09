@@ -6,6 +6,8 @@ setuptools.setup(
     author='Marcos Alcozer',
     author_email='marcos@alcozer.dev',
     url='https://www.alcozer.dev',
-    install_requires=[],
+    install_requires=[
+        'tenacity==7.0.0'
+    ],
     packages=setuptools.find_packages()
 )

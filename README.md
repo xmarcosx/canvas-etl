@@ -26,6 +26,22 @@ Create a dataset in BigQuery where the Canvas tables will live:
 bq mk --dataset canvas;
 ```
 
+### Service Account
+Authentication with the GCP project happens through a service account. In GCP, head to _IAM & Admin --> Service Accounts_ to create your service account.
+
+* Click **Create Service Account**
+* Choose a name (ie. Canvas ETL) and click **Create**
+* Grant the service account the following roles
+    * BigQuery Data Editor
+    * BigQuery User
+    * Cloud Build Service Account
+    * Dataflow Developer
+    * Dataflow Worker
+    * Logging Admin
+    * Monitoring Metric Writer
+    * Secret Manager Secret Accessor
+    * Storage Admin
+* Click **Done**
 
 ## Executing locally via DirectRunner
 This section explains how to run the Apache Beam scripts locally in a development environment. Clone this repo to your local machine and follow the steps below.

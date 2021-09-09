@@ -1,6 +1,6 @@
-apache-beam[gcp]==2.24.0
+apache-beam[gcp]==2.31.0
 ipykernel
 jupyter
 pandas
 requests
-tenacity
+tenacity==7.0.0
