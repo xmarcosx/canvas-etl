@@ -23,7 +23,7 @@ gsutil mb -p $GOOGLE_CLOUD_PROJECT gs://$GOOGLE_CLOUD_PROJECT;
 
 Create a dataset in BigQuery where the Canvas tables will live:
 ```bash
-bq mk --dataset canvas;
+bq mk --dataset raw_canvas;
 ```
 
 ### Service Account
