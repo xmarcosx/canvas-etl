@@ -133,7 +133,7 @@ base_url=$BASE_URL,token=$TOKEN;
 
 ## Running Dataflow Template
 
-Head to Dataflow in your Google Cloud project:
+Enable the [Cloud Autoscaling API](https://console.cloud.google.com/flows/enableapi?apiid=autoscaling.googleapis.com&_ga=2.60888172.119108578.1631233630-869209162.1631221497). Head to Dataflow in your Google Cloud project:
 
 1. Click **Create job from template**
 2. Select a name (ie. terms)
@@ -143,6 +143,8 @@ Head to Dataflow in your Google Cloud project:
 6. Enter an API endpoint from the list below (ie. terms)
 7. Enter your school year start date (ie. 2021-09-01)
 8. Enter your Canvas API access token
+9. Click show optional parameters
+    * Set **Additional experiments** to *enable_prime*
 9. Click **Run job**
 
 Run Dataflow jobs in the following order:
