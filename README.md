@@ -104,7 +104,7 @@ cd src;
 GOOGLE_CLOUD_PROJECT="";
 REGION="us-central1";
 TEMPLATE_IMAGE="gcr.io/$GOOGLE_CLOUD_PROJECT/canvas_etl:latest";
-TEMPLATE_PATH="gs://canvas-lms-extracts/dataflow/templates/canvas_etl.json";
+TEMPLATE_PATH="gs://canvas-etl/dataflow/templates/canvas_etl.json";
 
 gcloud config set project $GOOGLE_CLOUD_PROJECT;
 gcloud config set builds/use_kaniko True;
@@ -125,7 +125,7 @@ gcloud beta dataflow flex-template run $ENDPOINT \
     --template-file-gcs-location="$TEMPLATE_PATH" \
     --region="us-central1" \
     --project=$GOOGLE_CLOUD_PROJECT \
-    --staging-location="gs://canvas-lms-extracts/temp" \
+    --staging-location="gs://canvas-etl/temp" \
     --max-workers=3 \
     --parameters=endpoint=$ENDPOINT,start_date=$SCHOOL_YEAR_START_DATE,\
 base_url=$BASE_URL,token=$TOKEN;
