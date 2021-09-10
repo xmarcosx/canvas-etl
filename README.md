@@ -130,3 +130,29 @@ gcloud beta dataflow flex-template run $ENDPOINT \
     --parameters=endpoint=$ENDPOINT,start_date=$SCHOOL_YEAR_START_DATE,\
 base_url=$BASE_URL,token=$TOKEN;
 ```
+
+## Running Dataflow Template
+
+Head to Dataflow in your Google Cloud project:
+
+1. Click **Create job from template**
+2. Select a name (ie. terms)
+3. For **Dataflow template** select **Custom template**
+4. For **Template path** enter *canvas-etl/dataflow/templates/canvas_etl.json*
+5. Enter your Canvas base URL (ie. https://coolschool.instructure.com)
+6. Enter an API endpoint from the list below (ie. terms)
+7. Enter your school year start date (ie. 2021-09-01)
+8. Enter your Canvas API access token
+9. Click **Run job**
+
+Run Dataflow jobs in the following order:
+
+1. terms
+2. courses
+3. in parallel:
+    * assignments
+    * enrollments
+    * sections
+4. in parallel:
+    * submissions
+    * users
