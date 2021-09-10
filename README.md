@@ -40,7 +40,8 @@ Authentication with the GCP project happens through a service account. In GCP, h
     * Logging Admin
     * Monitoring Metric Writer
     * Secret Manager Secret Accessor
-    * Storage Admin
+    * Storage Object Admin
+    * Service Account User
 * Click **Done**
 
 ## Executing locally via DirectRunner
@@ -65,7 +66,7 @@ Below are a few sample commands that can be run to test things out.
 ```bash
 cd src;
 python ./main.py \
-    --endpoint courses \
+    --endpoint terms \
     --start_date $SCHOOL_YEAR_START_DATE \
     --base_url $CANVAS_BASE_URL \
     --token $CANVAS_ACCESS_TOKEN \
@@ -80,18 +81,19 @@ Scripts can also be executed from the local development environment, but run on 
 ```bash
 cd src;
 python ./main.py \
-    --endpoint courses \
-    --SCHOOL_YEAR_START_DATE $SCHOOL_YEAR_START_DATE \
+    --endpoint terms \
+    --start_date $SCHOOL_YEAR_START_DATE \
     --base_url $CANVAS_BASE_URL \
     --token $CANVAS_ACCESS_TOKEN \
     --project $PROJECT_ID \
     --temp_location "gs://$BUCKET/temp" \
     --runner DataflowRunner \
     --max_num_workers 5 \
-    --job_name "canvas" \
+    --job_name "canvasterms" \
     --region "us-central1" \
     --setup_file ./setup.py \
-    --requirements_file ./requirements.txt;
+    --requirements_file ./job-requirements.txt \
+    --experiments enable_prime;
 ```
 
 ## Create template Dataflow jobs
