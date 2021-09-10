@@ -119,7 +119,7 @@ gcloud dataflow flex-template build $TEMPLATE_PATH \
 BASE_URL="https://coolschool.instructure.com";
 TOKEN="";
 ENDPOINT="courses";
-SCHOOL_YEAR_START_DATE="2020-08-01";
+SCHOOL_YEAR_START_DATE="2021-09-01";
 
 gcloud beta dataflow flex-template run $ENDPOINT \
     --template-file-gcs-location="$TEMPLATE_PATH" \

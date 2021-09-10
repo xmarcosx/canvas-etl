@@ -32,39 +32,39 @@ def run(pipeline_args, base_url, endpoint, start_date, token):
         if endpoint == 'assignments':
             endpoint = Assignments
             transform = AssignmentsTransform
-            table_id = f'Assignments'
-            query = f'SELECT DISTINCT id FROM `{project_id}.Canvas.Courses`'
+            table_id = f'assignments'
+            query = f'SELECT DISTINCT id FROM `{project_id}.canvas.courses`'
         elif endpoint == 'courses':
             endpoint = Courses
             transform = CoursesTransform
-            table_id = f'Courses'
-            query = f'SELECT id FROM `{project_id}.Canvas.Terms` WHERE DATE(start_at) >= DATE "{start_date}"'
+            table_id = f'courses'
+            query = f'SELECT id FROM `{project_id}.canvas.terms` WHERE DATE(start_at) >= DATE "{start_date}"'
         elif endpoint == 'enrollments':
             endpoint = Enrollments
             transform = EnrollmentsTransform
-            table_id = f'Enrollments'
-            query = f'SELECT DISTINCT id FROM `{project_id}.Canvas.Courses`'
+            table_id = f'enrollments'
+            query = f'SELECT DISTINCT id FROM `{project_id}.canvas.courses`'
         elif endpoint == 'sections':
             endpoint = Sections
             transform = SectionsTransform
-            table_id = f'Sections'
-            query = f'SELECT DISTINCT id FROM `{project_id}.Canvas.Courses`'
+            table_id = f'sections'
+            query = f'SELECT DISTINCT id FROM `{project_id}.canvas.courses`'
         elif endpoint == 'submissions':
             endpoint = Submissions
             transform = SubmissionsTransform
-            table_id = f'Submissions'
-            query = f'SELECT DISTINCT id, course_id FROM `{project_id}.Canvas.Assignments`'
+            table_id = f'submissions'
+            query = f'SELECT DISTINCT id, course_id FROM `{project_id}.canvas.assignments`'
         elif endpoint == 'terms':
             endpoint = Terms
             transform = TermsTransform
-            table_id = f'Terms'
+            table_id = f'terms'
             # query result not used
             query = f'SELECT GENERATE_ARRAY(1, 1)'
         elif endpoint == 'users':
             endpoint = Users
             transform = UsersTransform
-            table_id = f'Users'
-            query = f'SELECT DISTINCT user_id FROM `{project_id}.Canvas.Enrollments`'
+            table_id = f'users'
+            query = f'SELECT DISTINCT user_id FROM `{project_id}.canvas.enrollments`'
         else:
             raise
         
@@ -83,7 +83,7 @@ def run(pipeline_args, base_url, endpoint, start_date, token):
             | 'Load into BigQuery' >> beam.io.WriteToBigQuery(
                 bigquery.TableReference(
                     projectId=project_id,
-                    datasetId='Canvas',
+                    datasetId='canvas',
                     tableId=table_id
                 ),
                 schema=endpoint().table_schema,
