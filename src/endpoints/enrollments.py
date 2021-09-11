@@ -52,6 +52,10 @@ class Enrollments(beam.DoFn):
                     {'name': 'created_at', 'type': 'TIMESTAMP', 'mode': 'NULLABLE'},
                     {'name': 'sortable_name', 'type': 'STRING', 'mode': 'NULLABLE'},
                     {'name': 'short_name', 'type': 'STRING', 'mode': 'NULLABLE'},
+                    {'name': 'sis_user_id', 'type': 'STRING', 'mode': 'NULLABLE'},
+                    {'name': 'integration_id', 'type': 'STRING', 'mode': 'NULLABLE'},
+                    {'name': 'sis_import_id', 'type': 'INTEGER', 'mode': 'NULLABLE'},
+                    {'name': 'login_id', 'type': 'STRING', 'mode': 'NULLABLE'},
                     {'name': 'pronouns', 'type': 'STRING', 'mode': 'NULLABLE'}
                 ],
                 'mode': 'NULLABLE'
