@@ -38,7 +38,7 @@ def run(pipeline_args, base_url, endpoint, start_date, token):
             endpoint = Courses
             transform = CoursesTransform
             table_id = f'courses'
-            query = f'SELECT id FROM `{project_id}.raw_canvas.terms` WHERE DATE(start_at) >= DATE "{start_date}"'
+            query = f'SELECT id FROM `{project_id}.raw_canvas.terms` WHERE DATE(start_at) >= DATE "{start_date}" OR start_at IS NULL'
         elif endpoint == 'enrollments':
             endpoint = Enrollments
             transform = EnrollmentsTransform
