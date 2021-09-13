@@ -97,7 +97,18 @@ class Courses(beam.DoFn):
     def setup(self):
         pass
 
+
     @retry(wait=wait_exponential(multiplier=1, min=4, max=10))
+    def fetch_data(self, url):
+
+        response = requests.get(url, headers={'Authorization' : f'Bearer {self.token}'})
+
+        if response.status_code != 200:
+            raise Exception
+        else:
+            return response   
+
+
     def process(self, element):
 
         logging.info(f"Fetching courses associated with term id: {element['id']}")
@@ -113,13 +124,9 @@ class Courses(beam.DoFn):
 
         while not done:
 
-            response = requests.get(
-                url,
-                headers={'Authorization' : f'Bearer {self.token}'})
+            response = self.fetch_data(url)
 
-            if response.status_code != 200:
-                raise Exception
-            elif isinstance(response.json(), list):
+            if isinstance(response.json(), list):
                 logging.info(f'Retrieved  {len(response.json())} courses')
                 courses = courses + response.json()
             else:

@@ -2,6 +2,7 @@ import logging
 import requests
 
 import apache_beam as beam
+from tenacity import retry, wait_exponential
 
 
 class AssignmentsTransform(beam.DoFn):
@@ -91,6 +92,18 @@ class Assignments(beam.DoFn):
     def setup(self):
         pass
 
+
+    @retry(wait=wait_exponential(multiplier=1, min=4, max=10))
+    def fetch_data(self, url):
+
+        response = requests.get(url, headers={'Authorization' : f'Bearer {self.token}'})
+
+        if response.status_code != 200:
+            raise Exception
+        else:
+            return response
+
+
     def process(self, element):
 
         logging.info(f"Fetching assignments for course id: {element['id']}")
@@ -104,9 +117,7 @@ class Assignments(beam.DoFn):
 
         while not done:
 
-            response = requests.get(
-                url,
-                headers={'Authorization' : f'Bearer {self.token}'})
+            response = self.fetch_data(url)
             
             if isinstance(response.json(), list):
                 logging.info(f'Retrieved  {len(response.json())} assignments')
