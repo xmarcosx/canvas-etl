@@ -1,6 +1,8 @@
 # Canvas ETL via Apache Beam
 
-This repository contains Google Dataflow files designed to batch pull Canvas LMS data via their APi and load into Google BigQuery.
+This repository contains Google Dataflow files designed to batch pull Canvas LMS data via their API and load into Google BigQuery.
+
+This repo is highlighted in this [YouTube video](https://youtu.be/Jp1uNqytTLE)
 
 ## Google Cloud Platform Configuration
 The instructions below assume a Google Cloud Platform (GCP) project has been created and an active billing account attached. They also assume the user is running them in Google's Cloud Shell. Modifications may need to be made if running the commands locally.
