@@ -120,7 +120,7 @@ class Courses(beam.DoFn):
         done = False
         per_page = 100
         url = f'{self.base_url}/api/v1/accounts/1/courses?page=1&per_page={per_page}' \
-            + f'&with_enrollments=true&published=true&enrollment_term_id={term_id}'
+            + f'&with_enrollments=true&published=true&enrollment_term_id={term_id}&include=term'
 
         while not done:
 
